@@ -1,120 +1,71 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "./todomvc-app.css";
+
 /* This file is for your main application CSS */
-@import "./phoenix.css";
 
-/* Alerts and form errors used by phx.new */
-.alert {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-}
-.alert-info {
-  color: #31708f;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
-}
-.alert-warning {
-  color: #8a6d3b;
-  background-color: #fcf8e3;
-  border-color: #faebcc;
-}
-.alert-danger {
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
-}
-.alert p {
-  margin-bottom: 0;
-}
-.alert:empty {
-  display: none;
-}
-.invalid-feedback {
-  color: #a94442;
-  display: block;
-  margin: -1rem 0 2rem;
+.todo-list li .checked + label {
+	background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');
+	background-repeat: no-repeat;
 }
 
-/* LiveView specific classes for your customization */
-.phx-no-feedback.invalid-feedback,
-.phx-no-feedback .invalid-feedback {
-  display: none;
-}
+.dblclick {
+	position: relative; /* So z-index works later, but no surprises now */
+  }
+  
+  .dblclick + span {
+	position: absolute;
+	top: -1px; /* these negative numbers are to ensure */
+	left: -1px; /* that the <span> covers the <a> */
+	width: 103%; /* Gotta do this instead of right: 0; */
+	bottom: -1px;
+	z-index: 1;
+  }
+  
+  .dblclick + span:active {
+	left: -9999px;
+  }
+  
+  .dblclick:hover {
+	z-index: 2;
+  }
 
-.phx-click-loading {
-  opacity: 0.5;
-  transition: opacity 1s ease-out;
-}
-
-.phx-loading{
-  cursor: wait;
-}
-
-.phx-modal {
-  opacity: 1!important;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-}
-
-.phx-modal-content {
-  background-color: #fefefe;
-  margin: 15vh auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
-.phx-modal-close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.phx-modal-close:hover,
-.phx-modal-close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.fade-in-scale {
-  animation: 0.2s ease-in 0s normal forwards 1 fade-in-scale-keys;
-}
-
-.fade-out-scale {
-  animation: 0.2s ease-out 0s normal forwards 1 fade-out-scale-keys;
-}
-
-.fade-in {
-  animation: 0.2s ease-out 0s normal forwards 1 fade-in-keys;
-}
-.fade-out {
-  animation: 0.2s ease-out 0s normal forwards 1 fade-out-keys;
-}
-
-@keyframes fade-in-scale-keys{
-  0% { scale: 0.95; opacity: 0; }
-  100% { scale: 1.0; opacity: 1; }
-}
-
-@keyframes fade-out-scale-keys{
-  0% { scale: 1.0; opacity: 1; }
-  100% { scale: 0.95; opacity: 0; }
-}
-
-@keyframes fade-in-keys{
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-@keyframes fade-out-keys{
-  0% { opacity: 1; }
-  100% { opacity: 0; }
-}
+  .todo-list li .toggle + div > a > label {
+	background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E');
+	background-repeat: no-repeat;
+	background-position: center left;
+  }
+  
+  .todo-list li .checked + div > a > label
+  {
+	background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');
+	background-repeat: no-repeat;
+	background-position: center left;
+  }
+  
+  .toggle {
+	width: 10%;
+	z-index: 3; /* keep the toggle checkmark above the rest */
+  }
+  
+  a.new-todo {
+	display: block;
+	text-decoration: none;
+  }
+  
+  .todo-list .new-todo {
+	border: 1px #1abc9c solid;
+  }
+  
+  .view a, .view a:visited {
+	display: block;
+	text-decoration: none;
+	color: #2b2d2f;
+  }
+  
+  .todo-list li .destroy {
+	text-decoration: none;
+	text-align: center;
+	z-index: 3; /* keep the delete link above the text */
+  }
